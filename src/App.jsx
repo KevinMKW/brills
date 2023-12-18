@@ -1,12 +1,11 @@
-import Navbar from "./components/Navbar/Navbar"
-import Dashboard from "./components/Dashboard"
+import NavBar from "./components/Navbar/Navbar.jsx";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
   return (
     <>
-      <Navbar></Navbar>
-      <Dashboard></Dashboard>
+      <NavBar />
     </>
   )
 }
