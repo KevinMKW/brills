@@ -1,6 +1,11 @@
-
 body {
     box-sizing: border-box;
-    width: 800px;
+    font-family: system-ui, 'Segoe UI', Roboto, 'Open Sans', Helvetica, sans-serif;
+    width: 60%;
     margin: 0 auto;
+}
+
+p {
+    font-size: 24px;
+    font-weight: 500;
 }
