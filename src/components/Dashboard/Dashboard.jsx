@@ -1,10 +1,14 @@
-// eslint-disable-next-line no-unused-vars
-import BillList from "../Bill/BillList";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Dashboard = () => {
     return (
         <div>
-            <h1>Dashboard</h1>
+            <div className="d-flex justify-content-between">
+                <h1>Dashboard</h1>
+                <Button><Link className='nav-link' to="/addbill">Add Bill</Link></Button>    
+            </div> 
+
         </div>
     );
 }
