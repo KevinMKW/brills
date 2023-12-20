@@ -1,7 +1,7 @@
 const AccountForm = () => {
     return (
         <div>
-            
+           SignUp 
         </div>
     );
 }
