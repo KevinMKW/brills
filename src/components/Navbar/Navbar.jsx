@@ -1,16 +1,17 @@
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Container, Button } from 'react-bootstrap';
-import './Navbar.css'
+
 
 const NavBar = () => {
   return (
     <>
-      <Navbar className='navbar'>
+      <Navbar style={{ borderBottom: '2px solid black' }}>
         <Container>
-          <Navbar.Brand href="#home">Brills</Navbar.Brand>
+          <Navbar.Brand><Link className='nav-link' to="/">Brills</Link></Navbar.Brand>
           <Nav className="nav-list ms-auto">
-            <Nav.Link href="#home">Dashboard</Nav.Link>
-            <Nav.Link href="#features">Account</Nav.Link>
-            <Button>Signup</Button>
+            <Nav.Link><Link className='nav-link' to="/dashboard">Dashboard</Link></Nav.Link>
+            <Nav.Link><Link className='nav-link' to="/profile">Account</Link></Nav.Link>
+            <Button><Link className='nav-link' to="/signup">Signup</Link></Button>
           </Nav>
         </Container>
       </Navbar>
