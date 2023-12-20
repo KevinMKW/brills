@@ -12,8 +12,8 @@ const Home = () => {
             <p style={{ fontSize: p.fontsize, color: p.gray}}>
                 You tell it how much money you earn each month, along with how much you spend—and on what—and it tells you how much you have left.
             </p>
-            <p style={{ fontSize: p.fontsize, color: p.gray}}>
-                It tells you nice and clearly whether you’re <span style={{ color: colors.success }}>safe</span>, <span style={{ color: 'yellow' }}>at risk</span>, or spending <span style={{ color: 'red' }}>too much</span>.
+            <p style={{ fontSize: p.fontsize, color: colors.gray}}>
+                It tells you nice and clearly whether you’re <span style={{ color: colors.success }}>safe</span>, <span style={{ color: colors.warning }}>at risk</span>, or spending <span style={{ color: colors.danger }}>too much</span>.
             </p>
         </div>
     );
