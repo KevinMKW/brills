@@ -10,7 +10,7 @@ import SignUp from './components/Account/AccountForm.jsx';
 function App() {
 
   return (
-    <>
+    <div className='wrap'>
       <NavBar />
       <Routes>
           <Route path="/" element={<Home />} />
@@ -19,7 +19,7 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/addbill" element={<AddBill />} />
        </Routes>
-    </>
+    </div>
   )
 }
 
