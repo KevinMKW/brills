@@ -1,6 +1,120 @@
-body {
+* {
     box-sizing: border-box;
     font-family: system-ui, 'Segoe UI', Roboto, 'Open Sans', Helvetica, sans-serif;
-    width: 60%;
+}
+
+body {
+    background: #f6f6f6;
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        width: 90%;
+    }
+}
+
+.wrap {
+    max-width: 46rem;
+    padding: 0.5rem;
     margin: 0 auto;
 }
+
+h1, h2, p {
+    line-height: 1.5;
+}
+
+h1 {
+    display: block;
+    font-size: 2em;
+    font-weight: bold;
+    letter-spacing: -.025em;
+}
+
+p {
+    font-size: 1.5em;
+    color: #000205;
+    margin-bottom: 1.5rem;
+}
+
+mark {
+    background: #fd8;
+    color: #000205;
+}
+
+.balanced {
+    color: #fff;
+    font-weight: 700;
+    padding: 0 0.25em;
+    border-radius: 5px;
+}
+
+.safe {
+    background: #579d1f;
+}
+
+.risk {
+    background: #f90;
+}
+
+.unsafe {
+    background: #e54120;
+}
+
+label > span {
+    font-size: .875rem;
+    font-weight: 700;
+    color: #000205;
+}
+
+.input-bg {
+    background: rgba(0,0,0,.05);
+    border-color: #bcbec2;
+}
+
+.i-focus:focus {
+    box-shadow: none;
+    background: rgba(4,89,219,.1);
+    border-color: #0459db;
+}
+
+form, details {
+    max-width: 26rem;
+}
+
+label > select.i-focus:focus {
+    background: rgba(0,0,0,.05);
+    border-color: #bcbec2;
+    box-shadow: #e54120 !important;
+}
+
+details > p {
+    font-size: 1rem;
+}
+
+.btn-delete {
+    background: #e54120;
+    color: #f6f6f6;
+    border: 0;
+}
+
+.btn-delete:hover,
+.btn-delete:active,
+.btn-delete:focus {
+    background: #e54120;
+    box-shadow: none;
+}
+
+.btn-cancel {
+    background: #000205;
+    color: #f6f6f6;
+    border: 0;
+}
+
+.btn-cancel:hover,
+.btn-cancel:active,
+.btn-cancel:focus {
+    background: #000205;
+    box-shadow: none;
+}
+
+

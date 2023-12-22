@@ -1,7 +1,7 @@
 export const colors = {
-    success: 'green',
-    warning: 'yellow',
-    danger: 'red',
+    success: '#579d1f',
+    warning: '#f90',
+    danger: '#e54120',
     gray: '#000205',
     bg: '#bcbec2',
 }

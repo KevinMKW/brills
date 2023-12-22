@@ -11,7 +11,7 @@ const NavBar = () => {
           <Nav className="nav-list ms-auto">
             <Nav.Link><Link className='nav-link' to="/dashboard">Dashboard</Link></Nav.Link>
             <Nav.Link><Link className='nav-link' to="/profile">Account</Link></Nav.Link>
-            <Button className='align-self-center py-0'><Link className='nav-link' to="/signup">Signup</Link></Button>
+            <Button className='align-self-center py-0 bg-black'><Link className='nav-link text-white' to="/signup">Signup</Link></Button>
           </Nav>
         </Container>
       </Navbar>
