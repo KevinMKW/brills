@@ -1,20 +1,28 @@
 import { Link } from "react-router-dom";
-import { Button } from "react-bootstrap";
 import { p, colors } from "../../constant";
 
 const Home = () => {
     return (
         <div className="mt-5">
-            <Button><Link className='nav-link' to="/dashboard">Go to Dashboard</Link></Button>
-            <h1 className="mt-5 text-h" style={{ fontSize: '2.5em', fontWeight: 'bold', color: '#000205'}}>
-                Brills is an app made to help you quickly calculate your disposable income.
+            <Link class="btn btn-primary"className='' to="/dashboard">
+                Go to Dashboard →
+            </Link>
+
+            <h1 className="mt-3 text-h" style={{ fontSize: '2.5em', fontWeight: 'bold', color: '#000205'}}>
+                Brills is an app made to help you <mark>quickly calculate your disposable income.</mark>
             </h1>
             <p style={{ fontSize: p.fontsize, color: p.gray}}>
                 You tell it how much money you earn each month, along with how much you spend—and on what—and it tells you how much you have left.
             </p>
             <p style={{ fontSize: p.fontsize, color: colors.gray}}>
-                It tells you nice and clearly whether you’re <span style={{ color: colors.success }}>safe</span>, <span style={{ color: colors.warning }}>at risk</span>, or spending <span style={{ color: colors.danger }}>too much</span>.
+                It tells you nice and clearly whether you’re <span className="balanced safe">safe</span>, <span  className="balanced risk">at risk</span>, or spending <span  className="balanced unsafe">too much</span>.
             </p>
+
+            <p>
+                Brills doesn’t connect to any financial institutions, and your data never leaves Brills servers.
+            </p>
+
+            <Link  class="btn btn-primary bg-dark rounded-pill" to='/signup'>Log In or Sign Up</Link>
         </div>
     );
 }
