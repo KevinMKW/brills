@@ -4,7 +4,7 @@ import { p, colors } from "../../constant";
 const Home = () => {
     return (
         <div className="mt-5">
-            <Link class="btn btn-primary"className='' to="/dashboard">
+            <Link className='btn btn-primary' to="/dashboard">
                 Go to Dashboard →
             </Link>
 
@@ -22,7 +22,7 @@ const Home = () => {
                 Brills doesn’t connect to any financial institutions, and your data never leaves Brills servers.
             </p>
 
-            <Link  class="btn btn-primary bg-dark rounded-pill" to='/signup'>Log In or Sign Up</Link>
+            <Link  className="btn btn-primary bg-dark border-0" to='/signup'>Log In or Sign Up</Link>
         </div>
     );
 }
