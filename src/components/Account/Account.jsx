@@ -17,7 +17,7 @@ const Account = () => {
                 </label>
 
                 <label htmlFor="number" className="form-label mt-2" style={{width: '100%'}} >
-                    <span>Email</span>
+                    <span>Income</span>
                     <input type="number" id="number" value="0.00" name="income" className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus " readOnly />
                     <small className="description">Brills will show your income minus your total outgoings in <span className="balanced safe">green</span> when you have 10% or more of your income remaining, <span className="balanced risk">orange</span> when you have less than 10%, or <span className="balanced unsafe">red</span> when you have less than 5%.</small>
                 </label>
