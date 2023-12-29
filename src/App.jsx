@@ -6,6 +6,7 @@ import Account from "./components/Account/Account.jsx"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AddBill from './components/Bill/AddBill.jsx';
 import SignUp from './components/Account/AccountForm.jsx';
+import EditBill from './components/Bill/EditBill.jsx';
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
           <Route path="/profile" element={<Account />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/addbill" element={<AddBill />} />
+          <Route path="/editbill" element={<EditBill />} />
        </Routes>
     </div>
   )
