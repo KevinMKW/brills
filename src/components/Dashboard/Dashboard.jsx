@@ -1,19 +1,9 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { h1, p, colors } from "../../constant";
-import BillItem from "../Bill/BillItem";
+import BillList from "../Bill/BillList";
 
 const Dashboard = () => {
-    const location = useLocation();
-    const addNewBill = location.state && location.state.newBillData;
-    const [bills, setBills] = useState([])
-
-    useEffect(() => {
-        if (addNewBill) {
-            setBills((prevBills) => [...prevBills, addNewBill]);
-        }
-    }, [addNewBill]);
 
     return (
         <div>
@@ -32,10 +22,9 @@ const Dashboard = () => {
                     <p style={{ fontSize: p.fontsize, color: colors.gray }}>You&apos;ve got  no bills to pay at the moment. <Link style={{ color: colors.gray }} to="/addbill">Add One</Link> if you need to!</p>
                 </div>
                 <div>
-                {bills.map((bill, index) => (
-                    <BillItem key={index} bill={bill} />
-                ))}
+                    <BillList />
                 </div>
+
             </div>
         </div>
     );
