@@ -1,17 +1,23 @@
+import axios from 'axios'
 import { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import BillItem from "../Bill/BillItem";
 
 const BillList = () => {
-    const location = useLocation();
-    const addNewBill = location.state && location.state.newBillData;
     const [bills, setBills] = useState([])
 
     useEffect(() => {
-        if (addNewBill) {
-            setBills((prevBills) => [...prevBills, addNewBill]);
+        const fetchtData = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/bills/')
+
+                setBills(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
         }
-    }, [addNewBill]);
+
+        fetchtData();
+    }, []);
 
     const handleUpdate = (updatedBill) => {
         setBills((prevBills) => {
@@ -20,6 +26,9 @@ const BillList = () => {
             });
         });
     };
+
+    const totalCost = bills.reduce((total, bill) => total + parseFloat(bill.cost), 0);
+
 
     return (
         <table className="table table-sm table-borderless">
@@ -33,13 +42,15 @@ const BillList = () => {
             </thead>
             <tbody>
                 {bills.map((bill) => (
-                    <BillItem key={bill.color} bill={bill} onUpdate={handleUpdate} />
+                    <BillItem key={bill.id} bill={bill} onUpdate={handleUpdate} />
                 ))}
             </tbody>
             <tfoot>
                 <tr>
                     <th className="tar">Total</th>
-                    <th className="tar tnum">£244.00</th>
+                    <th className="tar tnum">
+                        {totalCost.toFixed(2)}
+                    </th>
                     <td colSpan="2"></td>
                 </tr>
             </tfoot>
