@@ -19,14 +19,6 @@ const BillList = () => {
         fetchtData();
     }, []);
 
-    const handleUpdate = (updatedBill) => {
-        setBills((prevBills) => {
-            prevBills.map((bill) => {(
-                bill.id === updatedBill.id ? updatedBill : bill)
-            });
-        });
-    };
-
     const totalCost = bills.reduce((total, bill) => total + parseFloat(bill.cost), 0);
 
 
@@ -42,7 +34,7 @@ const BillList = () => {
             </thead>
             <tbody>
                 {bills.map((bill) => (
-                    <BillItem key={bill.id} bill={bill} onUpdate={handleUpdate} />
+                    <BillItem key={bill.id} bill={bill} />
                 ))}
             </tbody>
             <tfoot>

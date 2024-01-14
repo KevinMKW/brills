@@ -1,19 +1,7 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
 import { Link } from "react-router-dom";
-import EditBill from "./EditBill";
 
-const BillItem = ({ bill, onUpdate}) => {
-    const [isEditing, setIsEditing] = useState(false);
-
-    const handleEditClick = () => {
-        setIsEditing(true);
-    };
-
-    const handleUpdate = (updateBill) => {
-        onUpdate(updateBill);
-        setIsEditing(false);
-    };
+const BillItem = ({ bill }) => {
 
     return (
         <tr key={bill.color}>
@@ -23,16 +11,15 @@ const BillItem = ({ bill, onUpdate}) => {
             <td>{bill.cost}</td>
             <td>{bill.description}</td>
             <td>
-                {isEditing ? (
-                    <EditBill bill={bill} onUpdate={handleUpdate} />
-                ) : (
-                    <Link to='/editbill' onClick={handleEditClick}>
-                        Edit
-                    </Link>
-                )}
+                <Link to={`/editbill/${bill.id}`} >
+                    Edit
+                </Link>
             </td>
         </tr>
     );
 }
 
 export default BillItem;
+
+
+

@@ -2,67 +2,72 @@
 import { useState, useEffect } from 'react';
 import { Button } from "react-bootstrap";
 import axios from 'axios';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const EditBill = ({ bill, onUpdate }) => {
-    const [editedBill, setEditedBill] = useState({ ...bill });
+const EditBill = () => {  
+    const navigate = useNavigate();
+    const [bill, setBill] = useState({
+        name: "",
+        description: "", 
+        cost: "", 
+        color: "",
+    });
+    const { id } = useParams()
 
     useEffect(() => {
-        setEditedBill(bill);
-    }, [bill]);
+        const fetchtData = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/bill-details/' + id)
 
-    const handleInputChange = (e) => {
-        const { name, value } = e.target;
-        setEditedBill((prevBill) => ({
-            ...prevBill,
-            [name]: value,
-        }));
-    };
+                setBill(response.data);
+            } catch (error) {
+                console.error('Error fetching data:', error)
+            }
+        }
 
-    const handleSubmit = async (e) => {
+        fetchtData();
+    }, []);
+
+    const handleUpdate = e => {
         e.preventDefault();
 
-        const updateBill = async () => {
+        const editData = async () => {
             try {
-                const response = await axios.put(`http://127.0.0.1:8000/api/bill-update/${editedBill.id}`, editedBill);
+                const response = await axios.put(`http://127.0.0.1:8000/api/bill-update/${id}/`, bill)
 
-                if (response.status === 200) {
-                    console.log('Bill updated successfully:', response.data);
-                    onUpdate(response.data);
-                } else {
-                    console.error('Failed to update bill:', response.data);
-                }
+                setBill(response.data);
+                navigate('/dashboard')
             } catch (error) {
-                console.error('Error updating bill:', error);
+                console.error('Error fetching data:', error)
             }
-        };
+        }
 
-        updateBill();
+        editData();
     }
 
     return (
         <div>
             <h1>Edit Bill</h1>
 
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleUpdate}>
                 <label htmlFor="name" className="form-label my-3" style={{ width: '100%' }} >
                     <span>Name</span>
-                    <input type="text" name="name" id='name' className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" value={editedBill && editedBill.name ? editedBill.name : ''}
-                    onChange={handleInputChange}/>
+                    <input type="text" name="name" id='name' className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" value={bill.name} onChange={e => setBill({...bill, name: e.target.value})}/>
                 </label>
                 
                 <label htmlFor="name" className="form-label my-3" style={{ width: '100%' }} >
                     <span>Cost</span>
-                    <input type="text" name="cost" id='cost' className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" value={editedBill && editedBill.cost ? editedBill.cost : ''} onChange={handleInputChange} />
+                    <input type="text" name="cost" id='cost' className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" value={bill.cost} onChange={e => setBill({...bill, cost: e.target.value})}/>
                 </label>
                 
                 <label htmlFor="description" className="form-label my-3" style={{ width: '100%' }} >
                     <span>Description</span>
-                    <textarea name="description" id="description" className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" value={editedBill && editedBill.description? editedBill.description : ''} onChange={handleInputChange} />
+                    <textarea name="description" id="description" className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" value={bill.description} onChange={e => setBill({...bill, description: e.target.value})}/>
                 </label>
 
                 <label htmlFor="color" className="form-label my-3" style={{ width:'100%' }}>
                     <span>Color</span>
-                    <input type="color" name="color" id="color" className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" onChange={handleInputChange} value={editedBill && editedBill.color? editedBill.color : ''}/>
+                    <input type="color" name="color" id="color" className="form-control border-2 border-top-0 border-end-0 border-start-0 rounded-bottom-0 input-bg i-focus" value={bill.color} onChange={e => setBill({...bill, color: e.target.value})}/>
                 </label>
                 
                 <Button type="submit" className="my-4" style={{width: '100%'}} >Update Bill</Button>
