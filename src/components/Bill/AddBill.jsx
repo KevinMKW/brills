@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
 const AddBill = () => {
@@ -20,17 +21,19 @@ const AddBill = () => {
         }))
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        navigate("/dashboard", { state: { newBillData: newBill }})
+        try {
+            const response = await axios.post('http://127.0.0.1:8000/api/bill-create/', newBill)
 
-        setNewBill({
-            name: "",
-            description: "",
-            cost: "",
-            color: "",
-          });
+            console.log('Redirecting to dashboard');
+            navigate('/dashboard');
+
+            console.log('Server response:', response.data)
+        } catch (error) {
+            console.error('Error submitting form:', error)
+        }
     };
 
     return (
