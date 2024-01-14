@@ -45,6 +45,20 @@ const EditBill = () => {
         editData();
     }
 
+    const handleDelete = async () => {
+        try {
+            await axios.delete(`http://127.0.0.1:8000/api/bill-delete/${id}`)
+
+            navigate('/dashboard')
+        } catch (error) {
+            console.error('Error deleting data:', error);
+        }
+    }
+
+    const handleCancel = () => {
+        navigate('/dashboard')
+    }
+ 
     return (
         <div>
             <h1>Edit Bill</h1>
@@ -72,6 +86,17 @@ const EditBill = () => {
                 
                 <Button type="submit" className="my-4" style={{width: '100%'}} >Update Bill</Button>
             </form>
+
+            <details className="alert alert-danger">
+                <summary color='alert-heading'>
+                    <strong>Delete Bill</strong>
+                </summary>
+                <p>Are you sure you want to delete this bill? This action cannot be undone.</p>
+                <div className="d-flex justify-content-between ">
+                    <Button className="btn btn-danger" onClick={handleDelete} type='button'>Delete Bill</Button>
+                    <Button className="btn btn-secondary" onClick={handleCancel} type='button'>Cancel</Button>
+                </div>
+            </details>
         </div>
     );
 };

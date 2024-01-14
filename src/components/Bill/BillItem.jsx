@@ -6,7 +6,8 @@ const BillItem = ({ bill }) => {
     return (
         <tr key={bill.color}>
             <td>
-                <span className=" rounded-circle" style={{ width: '1em', height: '15px', padding: '5px', background: (bill.color) }}></span> {bill.name}
+                <div className=" rounded-circle" style={{ display: 'inline-block', width: '1em', height: '15px', padding: '5px', background: (bill.color) }}></div>
+                 <span> {bill.name}</span>
             </td>
             <td>{bill.cost}</td>
             <td>{bill.description}</td>
