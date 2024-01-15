@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useState, useEffect } from "react";
 import BillItem from "../Bill/BillItem";
+import { url } from '../../../api.json'
 
 const BillList = () => {
     const [bills, setBills] = useState([])
@@ -8,7 +9,7 @@ const BillList = () => {
     useEffect(() => {
         const fetchtData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/bills/')
+                const response = await axios.get(`${url}/bills/`)
 
                 setBills(response.data);
             } catch (error) {

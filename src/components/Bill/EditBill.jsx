@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Button } from "react-bootstrap";
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
+import { url } from '../../../api.json'
 
 const EditBill = () => {  
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const EditBill = () => {
     useEffect(() => {
         const fetchtData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8000/api/bill-details/' + id)
+                const response = await axios.get(`${url}/bill-details/${id}`)
 
                 setBill(response.data);
             } catch (error) {
@@ -33,7 +34,7 @@ const EditBill = () => {
 
         const editData = async () => {
             try {
-                const response = await axios.put(`http://127.0.0.1:8000/api/bill-update/${id}/`, bill)
+                const response = await axios.put(`${url}/bill-update/${id}/`, bill)
 
                 setBill(response.data);
                 navigate('/dashboard')
@@ -47,7 +48,7 @@ const EditBill = () => {
 
     const handleDelete = async () => {
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/bill-delete/${id}`)
+            await axios.delete(`${url}/bill-delete/${id}/`)
 
             navigate('/dashboard')
         } catch (error) {

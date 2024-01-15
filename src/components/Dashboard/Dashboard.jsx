@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { h1, p, colors } from "../../constant";
 import BillList from "../Bill/BillList";
+import { url } from '../../../api.json'
 
 const Dashboard = () => {
   const [hasData, setHasData] = useState(false);
@@ -11,7 +12,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/api/bills/');
+        const response = await axios.get(`${url}/bills/`);
         setHasData(response.data.length > 0);
       } catch (error) {
         console.error('Error fetching data:', error);

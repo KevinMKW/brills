@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Button } from "react-bootstrap";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { url } from '../../../api.json'
 
 // eslint-disable-next-line react/prop-types
 const AddBill = () => {
@@ -25,7 +26,7 @@ const AddBill = () => {
         e.preventDefault();
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/bill-create/', newBill)
+            const response = await axios.post(`${url}/bill-create/`, newBill)
 
             console.log('Redirecting to dashboard');
             navigate('/dashboard');
