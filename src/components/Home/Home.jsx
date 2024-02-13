@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
+import { supabase } from "../../lib/helper/supabaseClient";
 import { p, colors } from "../../constant";
 
 const Home = () => {
+    const user = supabase.auth.user();
+
     return (
         <div className="mt-5">
-            <Link className='btn btn-primary' to="/dashboard">
-                Go to Dashboard →
-            </Link>
+            {!user ? (
+                <Link className="btn btn-primary" to="/dashboard">
+                    Go to Dashboard →
+                </Link>
+            ) : console.log(null)}
 
             <h1 className="mt-3 text-h" style={{ fontSize: '2.5em', fontWeight: 'bold', color: '#000205'}}>
                 Brills is an app made to help you <mark>quickly calculate your disposable income.</mark>

@@ -15,9 +15,9 @@ function App() {
       <NavBar />
       <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/signup" element={<SignUp />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/profile" element={<Account />} />
-          <Route path="/signup" element={<SignUp />} />
           <Route path="/addbill" element={<AddBill />} />
           <Route path="/editbill/:id" element={<EditBill />} />
        </Routes>
